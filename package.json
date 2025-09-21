@@ -1,0 +1,30 @@
+{
+	"name": "ripple-vite",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"preview": "vite preview",
+		"format": "prettier --write ."
+	},
+	"dependencies": {
+		"ripple": "^0.2.63"
+	},
+	"devDependencies": {
+		"@tailwindcss/vite": "^4.1.13",
+		"@types/node": "^24.5.2",
+		"glob": "^11.0.3",
+		"prettier": "^3.6.2",
+		"prettier-plugin-ripple": "^0.2.63",
+		"typescript": "~5.9.2",
+		"vite": "npm:rolldown-vite@latest",
+		"vite-plugin-ripple": "^0.2.63"
+	},
+	"packageManager": "yarn@4.10.2+sha512.0b0e54ad5381f0a35184957bd3ea44e37f5a4fb1960b903b0fb9a3c7c2c009190455c41ef2a1977b1dbd3b72c5f152da696e9c52e2bc78a011b6adea8ee73ba3",
+	"volta": {
+		"node": "24.8.0",
+		"yarn": "4.10.2"
+	}
+}

@@ -1,0 +1,28 @@
+import { track } from 'ripple';
+
+interface CounterProps {
+	initialCount?: number;
+}
+
+export component Counter(props: CounterProps) {
+	let count = track(props.initialCount || 0);
+	let double = track(() => @count * 2);
+	let triple = track(() => @count * 3);
+	let quadruple = track(() => @count * 4);
+
+	<div class='flex flex-col gap-2 p-4 border rounded'>
+		<h2 class="font-semibold">{'Counter'}</h2>
+		<p>
+			{'Count: '}
+			<span>{@count}</span>
+			{' | Double: '}
+			<span>{@double}</span>
+			{' | Triple: '}
+			<span>{@triple}</span>
+			{' | Quadruple: '}
+			<span>{@quadruple}</span>
+		</p>
+		<button class='cursor-pointer bg-foreground/80 text-background font-semibold p-2 rounded' onClick={() => @count++}>{'Increment'}</button>
+		<button class='cursor-pointer bg-foreground/80 text-background font-semibold p-2 rounded' onClick={() => @count = 0}>{'Reset'}</button>
+	</div>
+}

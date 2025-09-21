@@ -1,0 +1,41 @@
+import { track, TrackedSet } from 'ripple';
+import { Counter } from './components/counter.ripple';
+import type { AppProps } from "./app.types";
+
+const initialCounters = [0, 5, 10];
+
+export component App(props: AppProps) {
+	let theme = track<AppProps["theme"]>(props.theme);
+	const counters = new TrackedSet(initialCounters);
+
+	<header class="fixed flex gap-2 items-center justify-between w-full p-4 text-center text-xl font-bold bg-background">
+		<span>{"Ripple Counter App"}</span>
+		<span>{`Theme: ${@theme}`}</span>
+		<button class="px-2 py-1 border rounded cursor-pointer" onclick={() => {
+			@theme = @theme === "light" ? "dark" : "light";
+			document.documentElement.classList.remove("light", "dark");
+			document.documentElement.classList.add(@theme);
+			localStorage.setItem('theme', @theme);
+		}}>
+			{"Toggle Theme"}
+		</button>
+	</header>
+
+	<div class="flex flex-col gap-4 p-4 pt-20">
+		for (const count of counters) {
+			<Counter initialCount={count} />
+		}
+	</div>
+	
+	<footer class="fixed bottom-0 w-full p-4 text-center bg-background">
+		<button class="m-4 p-2 border rounded cursor-pointer" onclick={() => {
+			const newCount = counters.size > 0 ? Math.max(...counters) + 5 : 0;
+			counters.add(newCount);
+		}}>
+			{"Add Counter"}
+		</button>
+		<button class="m-4 p-2 border rounded cursor-pointer disabled:opacity-50" disabled={counters.size <= 1} onclick={() => counters.delete(counters.values().next().value)}>
+			{"Remove Counter"}
+		</button>
+	</footer>
+}
