@@ -10,14 +10,14 @@ const config = {
 	tabWidth: 2,
 
 	// TODO: Remove this when prettier-plugin-ripple supports propper formatting
-	overrides: [
-		{
-			files: "*.ripple",
-			options: {
-				parser: "none",
-			},
-		},
-	],
+	// overrides: [
+	// 	{
+	// 		files: "*.ripple",
+	// 		options: {
+	// 			parser: "none",
+	// 		},
+	// 	},
+	// ],
 };
 
 export default config;

@@ -1,6 +1,6 @@
 export const THEME = {
-	LIGHT: 'light',
-	DARK: 'dark',
+	LIGHT: "light",
+	DARK: "dark",
 } as const;
 
 export type Theme = (typeof THEME)[keyof typeof THEME];
@@ -10,14 +10,14 @@ export const isValidTheme = (theme: string) => {
 };
 
 export const getInitialTheme = () => {
-	const storedTheme = localStorage.getItem('theme');
+	const storedTheme = localStorage.getItem("theme");
 	if (storedTheme && isValidTheme(storedTheme)) {
-		localStorage.setItem('theme', storedTheme);
+		localStorage.setItem("theme", storedTheme);
 		return storedTheme as Theme;
 	}
-	const theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+	const theme = window.matchMedia("(prefers-color-scheme: dark)").matches
 		? THEME.DARK
 		: THEME.LIGHT;
-	localStorage.setItem('theme', theme);
+	localStorage.setItem("theme", theme);
 	return theme;
 };

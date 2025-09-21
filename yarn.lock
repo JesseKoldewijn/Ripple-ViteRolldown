@@ -1289,12 +1289,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-ripple@npm:^0.2.63":
-  version: 0.2.63
-  resolution: "prettier-plugin-ripple@npm:0.2.63"
+"prettier-plugin-ripple@npm:^0.2.64":
+  version: 0.2.64
+  resolution: "prettier-plugin-ripple@npm:0.2.64"
   peerDependencies:
     prettier: ">=2.0.0"
-  checksum: 10c0/2898df8bbf9c1184b59567a4f6a7e36e447cc9a0e74cf84247e477c58f1df09015f3495f9029603edd7abcca05dc4268bb22b9ec919bfdcfa77b1e0eb2bf92f8
+  checksum: 10c0/54d98cdde249172862ab7e981700216d33843705c6d934191457805a4da02d414d099083a5c39389731a2fe08551f7ff351c0c0411135ba737986983f860e578
   languageName: node
   linkType: hard
 
@@ -1339,17 +1339,17 @@ __metadata:
     "@types/node": "npm:^24.5.2"
     glob: "npm:^11.0.3"
     prettier: "npm:^3.6.2"
-    prettier-plugin-ripple: "npm:^0.2.63"
-    ripple: "npm:^0.2.63"
+    prettier-plugin-ripple: "npm:^0.2.64"
+    ripple: "npm:^0.2.64"
     typescript: "npm:~5.9.2"
     vite: "npm:rolldown-vite@latest"
-    vite-plugin-ripple: "npm:^0.2.63"
+    vite-plugin-ripple: "npm:^0.2.64"
   languageName: unknown
   linkType: soft
 
-"ripple@npm:^0.2.63":
-  version: 0.2.63
-  resolution: "ripple@npm:0.2.63"
+"ripple@npm:^0.2.64":
+  version: 0.2.64
+  resolution: "ripple@npm:0.2.64"
   dependencies:
     "@jridgewell/sourcemap-codec": "npm:^1.5.5"
     acorn: "npm:^8.15.0"
@@ -1359,7 +1359,7 @@ __metadata:
     magic-string: "npm:^0.30.18"
     muggle-string: "npm:^0.4.1"
     zimmerframe: "npm:^1.1.2"
-  checksum: 10c0/e0068c2f8a563659ad754d440284ffd9dd3246c14da43faa7c0aa618685d3cf994cd3234df165f3666c32662c2aa114676c31f787a0cfe15417e6c3d84a5901a
+  checksum: 10c0/5f38f8d519c0d4688fd715ac19466c83c2d44ca99044a5f35a998d570131a60117eabb7b0a78f4c455c05dd46872556b7dd2c6a57571731a762dcc9de9de0ef6
   languageName: node
   linkType: hard
 
@@ -1632,10 +1632,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-ripple@npm:^0.2.63":
-  version: 0.2.63
-  resolution: "vite-plugin-ripple@npm:0.2.63"
-  checksum: 10c0/f488dcf988de37ec08a02098b6ad3a20ffd18976136e961476f26bf038b568e2a8474ff51c35f141f7f57ae221a71fa7680231950cc745dc4304d17839d59f0f
+"vite-plugin-ripple@npm:^0.2.64":
+  version: 0.2.64
+  resolution: "vite-plugin-ripple@npm:0.2.64"
+  checksum: 10c0/4c203f46bf0bd8abc57afdffbda5bc731affa32112f7168f750cdd738e27b1425ed06de04c3f75cf828a38f58724638b87a25f30874593891b7e7ef08d8afd14
   languageName: node
   linkType: hard
 
