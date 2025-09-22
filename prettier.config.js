@@ -5,7 +5,7 @@ const config = {
 	plugins: ["prettier-plugin-ripple"],
 	useTabs: true,
 	singleQuote: false,
-	trailingComma: "es5",
+	trailingComma: "all",
 	printWidth: 100,
 	tabWidth: 2,
 
