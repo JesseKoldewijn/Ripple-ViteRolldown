@@ -28,6 +28,9 @@ export component App(props: AppProps) {
 				const newCount = counters.size > 0 ? Math.max(...counters) + 5 : 0;
 				counters.add(newCount);
 			}}>{"Add Counter"}</button>
-		<button class="m-4 p-2 border rounded cursor-pointer disabled:opacity-50" disabled={counters.size <= 1} onclick={() => counters.delete(counters.values().next().value)}>{"Remove Counter"}</button>
+		<button class="m-4 p-2 border rounded cursor-pointer disabled:opacity-50" disabled={counters.size <= 1} onclick={() => {
+				const lastCounter = Math.max(...counters);
+				counters.delete(lastCounter);
+			}}>{"Remove Counter"}</button>
 	</footer>
 }
