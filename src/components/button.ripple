@@ -1,0 +1,135 @@
+import { effect, track } from "ripple";
+import { cn } from "../utils/cn";
+
+type ButtonProps = {
+	text?: string;
+	size?: number;
+	color?: string;
+	strokeWidth?: number;
+	className?: string;
+	textClassName?: string;
+	onclick?: Function;
+	disabled?: boolean
+};
+
+export component Button(props: ButtonProps) {
+	const textMaxLength = 15;
+	let validatedText = track(props.text ?? "Button");
+
+	let text = track(@validatedText.length > textMaxLength ? @validatedText.slice(0, textMaxLength) + "…" : @validatedText ?? "Button");
+
+	let size = track(props.size ?? 110);
+	let color = track(props.color ?? "currentColor");
+	let strokeWidth = track(props.strokeWidth ?? 15);
+
+	let className = track(cn("select-none cursor-pointer", props.className));
+	let textClassName = track(cn("text-foreground", props.textClassName));
+
+	let svgNode = track();
+	const svgRef = node => {
+		@svgNode = node;
+		node.setAttribute("class", @className);
+		const textElement = node.querySelector("text");
+		textElement.style.transition = "opacity 1000ms ease-in-out";
+		textElement.style.opacity = "0";
+		textElement.setAttribute("class", @textClassName);
+
+		const timeout = setTimeout(() => {
+			textElement.style.opacity = "1";
+		}, 550);
+
+		return () => {
+			@svgNode = undefined;
+			clearTimeout(timeout);
+		};
+	};
+
+	let currentIndex = 0;
+	function cycleSvgPath(pathTrack: string[]) {
+		const result = pathTrack[currentIndex];
+		const index = currentIndex + 1;
+		currentIndex = index % pathTrack.length;
+
+		return result;
+	}
+
+	let path1Opacity = track(0);
+	let path2Opacity = track(0);
+	let path3Opacity = track(0);
+	let path4Opacity = track(0);
+
+	const pathSegments = [
+	"M91.47981262207031,57.39909744262695C91.47981262207031,57.39909744262695,709.4169921875,64.57398223876953,709.4169921875,64.57398223876953",
+	"M709.4169921875,64.57398223876953C709.4169921875,64.57398223876953,722.8699340820312,340.8071594238281,722.8699340820312,340.8071594238281",
+	"M722.8699340820312,340.8071594238281C722.8699340820312,340.8071594238281,100.44842529296875,301.34527587890625,100.44842529296875,301.34527587890625",
+	"M100.44842529296875,301.34527587890625C100.44842529296875,301.34527587890625,89.68608856201172,99.55155944824219,89.68608856201172,99.55155944824219"
+	];
+
+	effect(() => {
+		const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+		if (prefersReducedMotion) {
+			@path1Opacity = 1;
+			@path2Opacity = 1;
+			@path3Opacity = 1;
+			@path4Opacity = 1;
+
+			return;
+		}
+
+		const interval = setInterval(() => {
+			const step = cycleSvgPath([
+			"",
+			"1",
+			"2",
+			"3",
+			"4"
+			]);
+
+			const targetOpacities = [
+			0,
+			0,
+			0,
+			0
+			];
+
+			if (step === "1") targetOpacities[0] = 1; else if (step === "2") {
+				targetOpacities[0] = 1;
+				targetOpacities[1] = 1;
+			} else if (step === "3") {
+				targetOpacities[0] = 1;
+				targetOpacities[1] = 1;
+				targetOpacities[2] = 1;
+			} else if (step === "4") {
+				targetOpacities[0] = 1;
+				targetOpacities[1] = 1;
+				targetOpacities[2] = 1;
+				targetOpacities[3] = 1;
+			}
+
+			const currentOpacities = [
+			@path1Opacity,
+			@path2Opacity,
+			@path3Opacity,
+			@path4Opacity
+			];
+
+			if (currentOpacities[0] !== targetOpacities[0]) @path1Opacity = targetOpacities[0];
+			if (currentOpacities[1] !== targetOpacities[1]) @path2Opacity = targetOpacities[1];
+			if (currentOpacities[2] !== targetOpacities[2]) @path3Opacity = targetOpacities[2];
+			if (currentOpacities[3] !== targetOpacities[3]) @path4Opacity = targetOpacities[3];
+		}, 450);
+
+		return () => clearInterval(interval);
+	});
+
+	<button onclick={e => {
+			if (props.onclick) props.onclick(e);
+		}} disabled={props.disabled} style="background: none; border: none; padding: 0; margin: 0;"><svg {ref svgRef} viewBox="0 0 800 400" height={@size}>
+		<path d={pathSegments[0]} fill="none" stroke-width={@strokeWidth} stroke={@color} stroke-linecap="butt" opacity={@path1Opacity} style="transition: opacity 250ms ease-in-out; @media (prefers-reduced-motion: reduce) { transition: none; }" transform="matrix(0.99500625,0,-0.35089289569710413,0.99500625,50.274723994013186,1.4479939959287833)" />
+		<path d={pathSegments[1]} fill="none" stroke-width={@strokeWidth} stroke={@color} stroke-linecap="butt" opacity={@path2Opacity} style="transition: opacity 250ms ease-in-out; @media (prefers-reduced-motion: reduce) { transition: none; }" transform="matrix(0.99500625,0,-0.35089289569710413,0.99500625,50.274723994013186,1.4479939959287833)" />
+		<path d={pathSegments[2]} fill="none" stroke-width={@strokeWidth} stroke={@color} stroke-linecap="butt" opacity={@path3Opacity} style="transition: opacity 250ms ease-in-out; @media (prefers-reduced-motion: reduce) { transition: none; }" transform="matrix(0.99500625,0,-0.35089289569710413,0.99500625,50.274723994013186,1.4479939959287833)" />
+		<path d={pathSegments[3]} fill="none" stroke-width={@strokeWidth} stroke={@color} stroke-linecap="butt" opacity={@path4Opacity} style="transition: opacity 250ms ease-in-out; @media (prefers-reduced-motion: reduce) { transition: none; }" transform="matrix(0.99500625,0,-0.35089289569710413,0.99500625,50.274723994013186,1.4479939959287833)" />
+		<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size={@size * 0.6} fill={@color}>{@text}</text>
+	</svg></button>
+}

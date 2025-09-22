@@ -1,5 +1,6 @@
 import { track, TrackedSet } from "ripple";
 import { Counter } from "./components/counter.ripple";
+import { Button } from "./components/button.ripple";
 import type { AppProps } from "./app.types";
 
 const initialCounters = [0, 5, 10];
@@ -24,13 +25,13 @@ export component App(props: AppProps) {
 	}</div>
 
 	<footer class="fixed bottom-0 w-full p-4 text-center bg-background">
-		<button class="m-4 p-2 border rounded cursor-pointer" onclick={() => {
+		<Button className="m-4 p-2 cursor-pointer text-red-500" onclick={() => {
 				const newCount = counters.size > 0 ? Math.max(...counters) + 5 : 0;
 				counters.add(newCount);
-			}}>{"Add Counter"}</button>
-		<button class="m-4 p-2 border rounded cursor-pointer disabled:opacity-50" disabled={counters.size <= 1} onclick={() => {
+			}} text="Add Counter" />
+		<Button className="m-4 p-2 cursor-pointer text-red-500" disabled={counters.size <= 1} onclick={() => {
 				const lastCounter = Math.max(...counters);
 				counters.delete(lastCounter);
-			}}>{"Remove Counter"}</button>
+			}} text="Remove Counter" />
 	</footer>
 }
