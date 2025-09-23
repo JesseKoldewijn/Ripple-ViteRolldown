@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
 	--color-foreground: #0c0c0c;
@@ -10,7 +10,10 @@
 	--color-background: #0c0c0c;
 }
 
-:root {
+:root,
+html,
+body {
 	background-color: var(--color-background);
 	color: var(--color-foreground);
+	overscroll-behavior: none;
 }
