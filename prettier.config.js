@@ -7,6 +7,7 @@ const config = {
 	singleQuote: false,
 	trailingComma: "all",
 	printWidth: 100,
+	bracketSameLine: true,
 	tabWidth: 2,
 
 	// TODO: Remove this when prettier-plugin-ripple supports propper formatting

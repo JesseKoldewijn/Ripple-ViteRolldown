@@ -1,6 +1,8 @@
 import { track, TrackedSet } from "ripple";
 import { Counter } from "./components/counter.ripple";
 import { Button } from "./components/button.ripple";
+import { Sun } from "./components/icons/sun.ripple";
+import { Moon } from "./components/icons/moon.ripple";
 import type { AppProps } from "./app.types";
 
 const initialCounters = [0, 5, 10];
@@ -9,29 +11,33 @@ export component App(props: AppProps) {
 	let theme = track(props.theme);
 	const counters = new TrackedSet(initialCounters);
 
-	<header class="fixed flex gap-2 items-center justify-between w-full p-4 text-center text-xl font-bold bg-background">
-		<span>{"Ripple Counter App"}</span>
-		<span>{`Theme: ${@theme}`}</span>
-		<button class="px-2 py-1 border rounded cursor-pointer" onclick={() => {
+	<header class="fixed flex gap-2 items-center justify-evenly w-full p-4 text-center md:text-xl font-bold bg-background">
+		<span class="text-start w-full">{"Ripple"}</span>
+		<span class="text-center w-full">{`Theme: ${@theme}`}</span>
+		<div class="text-center w-full flex justify-end"><button class="text-center px-2 py-1 border rounded cursor-pointer" onclick={() => {
 				@theme = @theme === "light" ? "dark" : "light";
 				document.documentElement.classList.remove("light", "dark");
 				document.documentElement.classList.add(@theme);
 				localStorage.setItem("theme", @theme);
-			}}>{"Toggle Theme"}</button>
+			}}>if (@theme === "light") {
+			<Sun class="inline" width="24" />
+		} else {
+			<Moon class="inline" width="24" />
+		}</button></div>
 	</header>
 
 	<div class="flex flex-col gap-4 p-4 pt-20">for (const count of counters) {
 		<Counter initialCount={count} />
 	}</div>
 
-	<footer class="fixed bottom-0 w-full p-4 text-center bg-background">
-		<Button className="m-4 p-2 cursor-pointer text-red-500" onclick={() => {
-				const newCount = counters.size > 0 ? Math.max(...counters) + 5 : 0;
-				counters.add(newCount);
-			}} text="Add Counter" />
-		<Button className="m-4 p-2 cursor-pointer text-red-500" disabled={counters.size <= 1} onclick={() => {
+	<footer class="fixed bottom-0 w-full p-4 text-center bg-background"><div class="flex justify-center flex-row gap-2">
+		<Button class="w-full h-12" disabled={counters.size <= 1} onClick={() => {
 				const lastCounter = Math.max(...counters);
 				counters.delete(lastCounter);
 			}} text="Remove Counter" />
-	</footer>
+		<Button class="w-full h-12" onClick={() => {
+				const newCount = counters.size > 0 ? Math.max(...counters) + 5 : 0;
+				counters.add(newCount);
+			}} text="Add Counter" />
+	</div></footer>
 }

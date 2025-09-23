@@ -1,0 +1,29 @@
+import { track } from "ripple";
+
+interface SunProps {
+	width?: string | number;
+	height?: string | number;
+	class?: string;
+}
+
+export component Moon(props: SunProps) {
+	let trackedProps = track({
+		width: props.width,
+		height: props.height,
+		class: props.class,
+	});
+
+	let svgNode = track();
+	const svgRef = (node: SVGSVGElement) => {
+		@svgNode = node;
+		if (@trackedProps.class) {
+			node.setAttribute("class", @trackedProps.class);
+		}
+
+		return () => {
+			@svgNode = undefined;
+		};
+	};
+
+	<svg {ref svgRef} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width={@trackedProps.width} height={@trackedProps.height}><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+}
