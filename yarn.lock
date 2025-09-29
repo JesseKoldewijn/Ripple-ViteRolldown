@@ -470,12 +470,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^24.5.2":
-  version: 24.5.2
-  resolution: "@types/node@npm:24.5.2"
+"@types/node@npm:^24.6.0":
+  version: 24.6.0
+  resolution: "@types/node@npm:24.6.0"
   dependencies:
-    undici-types: "npm:~7.12.0"
-  checksum: 10c0/96baaca6564d39c6f7f6eddd73ce41e2a7594ef37225cd52df3be36fad31712af8ae178387a72d0b80f2e2799e7fd30c014bc0ae9eb9f962d9079b691be00c48
+    undici-types: "npm:~7.13.0"
+  checksum: 10c0/06f1aa1b5d9a8c26285b34c25aee554f31a1dc0b39627cc14e7c1c6967e75a47ab9f409eee14796cbcc004ae4059fa884cb6092ecfb368c9656d16686d7cc9d8
   languageName: node
   linkType: hard
 
@@ -1296,12 +1296,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-ripple@npm:^0.2.77":
-  version: 0.2.77
-  resolution: "prettier-plugin-ripple@npm:0.2.77"
+"prettier-plugin-ripple@npm:^0.2.91":
+  version: 0.2.91
+  resolution: "prettier-plugin-ripple@npm:0.2.91"
   peerDependencies:
     prettier: ">=2.0.0"
-  checksum: 10c0/d8d3c7d429682754002dbd81468c633117a8d685dd70e51969d480c103f9cd3e30a8be643b007eca6b0b96d7da3caaff24529f185d46cf2b6a05312d52a1236a
+  checksum: 10c0/6c6cf0c48795e283d238558b1f133a30a21a69dee693dff08157a3bd790573843d6d26610f1b3d68139022761ca364bc17f8ce123a7d430d43c2e7fed47f634d
   languageName: node
   linkType: hard
 
@@ -1343,32 +1343,33 @@ __metadata:
   resolution: "ripple-vite@workspace:."
   dependencies:
     "@tailwindcss/vite": "npm:^4.1.13"
-    "@types/node": "npm:^24.5.2"
+    "@types/node": "npm:^24.6.0"
     clsx: "npm:^2.1.1"
     glob: "npm:^11.0.3"
     prettier: "npm:^3.6.2"
-    prettier-plugin-ripple: "npm:^0.2.77"
-    ripple: "npm:^0.2.77"
+    prettier-plugin-ripple: "npm:^0.2.91"
+    ripple: "npm:^0.2.91"
     tailwind-merge: "npm:^3.3.1"
     typescript: "npm:~5.9.2"
     vite: "npm:rolldown-vite@^7.1.13"
-    vite-plugin-ripple: "npm:^0.2.77"
+    vite-plugin-ripple: "npm:^0.2.91"
   languageName: unknown
   linkType: soft
 
-"ripple@npm:^0.2.77":
-  version: 0.2.77
-  resolution: "ripple@npm:0.2.77"
+"ripple@npm:^0.2.91":
+  version: 0.2.91
+  resolution: "ripple@npm:0.2.91"
   dependencies:
     "@jridgewell/sourcemap-codec": "npm:^1.5.5"
     acorn: "npm:^8.15.0"
     acorn-typescript: "npm:^1.4.13"
+    clsx: "npm:^2.1.1"
     esrap: "npm:^2.1.0"
     is-reference: "npm:^3.0.3"
     magic-string: "npm:^0.30.18"
     muggle-string: "npm:^0.4.1"
     zimmerframe: "npm:^1.1.2"
-  checksum: 10c0/87d357fbd98a5d9ccc22575eab9e1c9c2e5c2201106a35fcc9b80c8456de3612f401a051b0586510fef33bec8cc1da8981a771f336f1816a54667f84562baf51
+  checksum: 10c0/b0536b6cc48eb55aa89991351493eae0662b17ff8483d5155010616dd251c022d8419a8f8cecfd72163ad963c051750bc72b02ba309a3d2a6c036e2de9c13618
   languageName: node
   linkType: hard
 
@@ -1623,10 +1624,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~7.12.0":
-  version: 7.12.0
-  resolution: "undici-types@npm:7.12.0"
-  checksum: 10c0/326e455bbc0026db1d6b81c76a1cf10c63f7e2f9821db2e24fdc258f482814e5bfa8481f8910d07c68e305937c5c049610fdc441c5e8b7bb0daca7154fb8a306
+"undici-types@npm:~7.13.0":
+  version: 7.13.0
+  resolution: "undici-types@npm:7.13.0"
+  checksum: 10c0/44bbb0935425291351bfd8039571f017295b5d6dc5727045d0a4fea8c6ffe73a6703b48ce010f9cb539b9041a75b463f8cfe1e7309cab7486452505fb0d66151
   languageName: node
   linkType: hard
 
@@ -1648,10 +1649,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-ripple@npm:^0.2.77":
-  version: 0.2.77
-  resolution: "vite-plugin-ripple@npm:0.2.77"
-  checksum: 10c0/2c779181b89ef932ffc61b28480b8db869a2cb7dc2274bd3aa759875839f06ee786f6bc254ba26262abb85590c3a302fa7e7e672edd9affb92731136f2dbeda8
+"vite-plugin-ripple@npm:^0.2.91":
+  version: 0.2.91
+  resolution: "vite-plugin-ripple@npm:0.2.91"
+  checksum: 10c0/cd3b8ddfeb0fbd902ce26880d860f2c32c1236f7245d84295f5eed0ed0acef5f296fc6b56ed70d61d6d135efe6e7cd0aa96ed5c30b6a68ae14f11c0c7f6a758a
   languageName: node
   linkType: hard
 

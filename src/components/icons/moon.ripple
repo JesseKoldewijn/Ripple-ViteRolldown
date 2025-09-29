@@ -1,12 +1,12 @@
 import { track } from "ripple";
 
-interface SunProps {
+interface MoonProps {
 	width?: string | number;
 	height?: string | number;
 	class?: string;
 }
 
-export component Moon(props: SunProps) {
+export component Moon(props: MoonProps) {
 	let trackedProps = track({
 		width: props.width,
 		height: props.height,
