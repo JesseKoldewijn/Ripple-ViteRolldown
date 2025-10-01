@@ -1,21 +1,55 @@
-import { track, TrackedSet } from "ripple";
+import { track, effect, TrackedSet } from "ripple";
+import { useAtom } from "jotai-ripple";
+
 import { Counter } from "./components/counter.ripple";
 import { Button } from "./components/button.ripple";
 import { Sun } from "./components/icons/sun.ripple";
 import { Moon } from "./components/icons/moon.ripple";
+
+import { appStateAtom } from "./store/root";
 import type { AppProps } from "./app.types";
+import { getInitialTheme } from "./logic/theme";
 
 const initialCounters = [0, 5, 10];
 
-export component App(props: AppProps) {
-	let theme = track(props.theme);
+export component App() {
+	const [ appStore, setAppStore ] = useAtom(appStateAtom);
+
+	effect(() => {
+		themeLoader(theme => {
+			setAppStore({
+				...appStore,
+				theme,
+			});
+		});
+	});
+
+	let theme = track(@appStore.theme);
 	const counters = new TrackedSet(initialCounters);
+
+	function themeLoader(themeSet: Function) {
+		const _theme = getInitialTheme();
+
+		document.documentElement.classList.remove("light", "dark");
+		document.documentElement.classList.add(_theme);
+
+		if (themeSet) {
+			themeSet(_theme);
+		}
+		@theme = _theme;
+	}
 
 	<header class="fixed flex gap-2 items-center justify-evenly w-full p-4 text-center md:text-xl font-bold bg-background">
 		<span class="text-start w-full">{"Ripple"}</span>
 		<span class="text-center w-full">{`Theme: ${@theme}`}</span>
-		<div class="text-center w-full flex justify-end"><button class="text-center px-2 py-1 border rounded cursor-pointer" onclick={() => {
-				@theme = @theme === "light" ? "dark" : "light";
+		<div class="text-center w-full flex justify-end"><button class="text-center px-2 py-1 h-10 w-10 flex items-center-justify-center border rounded cursor-pointer" onclick={() => {
+				@theme = @appStore.theme === "light" ? "dark" : "light";
+
+				setAppStore({
+					...appStore,
+					theme: @theme,
+				});
+
 				document.documentElement.classList.remove("light", "dark");
 				document.documentElement.classList.add(@theme);
 				localStorage.setItem("theme", @theme);
